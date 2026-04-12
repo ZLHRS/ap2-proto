@@ -2,7 +2,7 @@
 
 This repository serves as the central source of truth for all gRPC contracts (`.proto` files) used in Assignment 2.
 
-It adheres to a **Contract-First** development approach, meaning all service APIs and models are strictly defined here independently of the microservice implementations.
+It adheres to a development approach, meaning all service APIs and models are strictly defined here independently of the microservice implementations.
 
 ## Repository Structure
 ```text
@@ -18,7 +18,5 @@ It adheres to a **Contract-First** development approach, meaning all service API
 ```
 
 ## Setup and Usage
-
-The generated Go code produced from these prototypes should be stored in a separate Generated Repository using the module path `github.com/myuser/ap2-generated`.
 
 Your individual microservices (e.g. Order Service, Payment Service) will import the pre-built gRPC code directly from the Generated Repository. This keeps application logic entirely separate from the gRPC definition files.
