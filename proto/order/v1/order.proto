@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package order.v1;
+
+option go_package = "github.com/myuser/ap2-generated/order/v1;orderv1";
+
+import "google/protobuf/timestamp.proto";
+
+enum OrderStatus {
+  ORDER_STATUS_UNSPECIFIED = 0;
+  ORDER_STATUS_CREATED = 1;
+  ORDER_STATUS_PAYMENT_PENDING = 2;
+  ORDER_STATUS_PAID = 3;
+  ORDER_STATUS_SHIPPED = 4;
+  ORDER_STATUS_DELIVERED = 5;
+  ORDER_STATUS_CANCELLED = 6;
+}
+
+message OrderRequest {
+  string order_id = 1;
+}
+
+message OrderStatusUpdate {
+  string order_id = 1;
+  OrderStatus status = 2;
+  string description = 3;
+  google.protobuf.Timestamp updated_at = 4;
+}
+
+service OrderService {
+  rpc SubscribeToOrderUpdates(OrderRequest) returns (stream OrderStatusUpdate);
+}
