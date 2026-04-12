@@ -31,5 +31,3 @@ message PaymentResponse {
 service PaymentService {
   rpc ProcessPayment(PaymentRequest) returns (PaymentResponse);
 }
-
-#some change 2
