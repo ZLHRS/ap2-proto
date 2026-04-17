@@ -28,6 +28,16 @@ message PaymentResponse {
   google.protobuf.Timestamp processed_at = 5;
 }
 
+message ListPaymentsRequest {
+  double min_amount = 1; // 0 = unlimited
+  double max_amount = 2; // 0 = unlimited
+}
+
+message ListPaymentsResponse {
+  repeated PaymentResponse payments = 1;
+}
+
 service PaymentService {
   rpc ProcessPayment(PaymentRequest) returns (PaymentResponse);
+  rpc ListPayments(ListPaymentsRequest) returns (ListPaymentsResponse);
 }
